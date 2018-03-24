@@ -1,0 +1,54 @@
+﻿@inherits Umbraco.Web.Macros.PartialViewMacroPage
+@using Umbraco.Web
+
+
+@*
+    This snippet displays a list of links of the pages immediately under the top-most page in the content tree.
+    This is the home page for a standard website.
+    It also highlights the current active page/section in the navigation with the CSS class "current".
+*@
+
+@{ var selection = Model.Content.Site().Children.Where(x => x.IsVisible()).ToArray(); }
+
+
+@if (selection.Length > 0)
+{
+    <div class="collapse navbar-collapse" id="navbarSupportContent">
+        <ul class="navbar-nav">
+            @foreach (var item in selection)
+            {
+                if (item.Children().Count(x => x.IsVisible()) > 0)
+                {
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="@item.Url" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            @item.Name
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            @foreach (var subMEnuItem in item.Children().Where(x => x.IsVisible()))
+                            {
+                                if (subMEnuItem.DocumentTypeAlias == "projectItem")
+                                {
+                                    if (umbraco.library.GetPreValueAsString(subMEnuItem.GetPropertyValue<int>("projectStatus")) == "Completed")
+                                    {
+                                        <a class="dropdown-item" href="@subMEnuItem.Url">@subMEnuItem.Name</a>
+                                    }
+                                }
+                                if (subMEnuItem.DocumentTypeAlias == "cvItem")
+                                {
+                                    <a class="dropdown-item" href="@subMEnuItem.Url">@subMEnuItem.Name</a>
+
+                                }
+                            }
+                        </div>
+                    </li>
+                }
+                else
+                {
+                    <li class="nav-item @(item.Name == Model.Content.Name) ? " active":nul">
+                        <a class="nav-link" href="@item.Url">@item.Name</a>
+                    </li>
+                }
+            }
+        </ul>
+    </div>
+}
