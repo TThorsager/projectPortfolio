@@ -1,10 +1,39 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.ProjectItem>
 @using ContentModels = Umbraco.Web.PublishedContentModels;
 @{
-	Layout = "Master.cshtml";
+    /**/
+
+    Layout = "Master.cshtml";
 }
 
 @Umbraco.Field("projectsTitle")
 @Umbraco.Field("projectDescription")
 
+@{
+    var projectStatus = Umbraco.Field("projectStatus");
+}
+
+@{
+    if (umbraco.library.GetPreValueAsString(CurrentPage.GetPropertyValue<int>("projectStatus")) == "Idea")
+    {
+        <p>This project is only an idea, for now.</p>
+    }
+    if (umbraco.library.GetPreValueAsString(CurrentPage.GetPropertyValue<int>("projectStatus")) == "Initiated")
+    {
+        <p>This project has been initiated.</p>
+    }
+    if (umbraco.library.GetPreValueAsString(CurrentPage.GetPropertyValue<int>("projectStatus")) == "Under development")
+    {
+        <p>This project is under development</p>
+    }
+    if (umbraco.library.GetPreValueAsString(CurrentPage.GetPropertyValue<int>("projectStatus")) == "Completed")
+    {
+        <p>This project has been completed.</p>
+    }
+
+}
+
+
 @Umbraco.Field("projectStatus")
+
+

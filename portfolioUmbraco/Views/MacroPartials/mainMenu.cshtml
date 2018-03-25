@@ -1,12 +1,20 @@
 ﻿@inherits Umbraco.Web.Macros.PartialViewMacroPage
 @using Umbraco.Web
 
+@*Skal måske bruges*@
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@using Newtonsoft.Json;
+@using Umbraco.Web.Models;
+
 
 @*
     This snippet displays a list of links of the pages immediately under the top-most page in the content tree.
     This is the home page for a standard website.
     It also highlights the current active page/section in the navigation with the CSS class "current".
 *@
+
+
+
 
 @{ var selection = Model.Content.Site().Children.Where(x => x.IsVisible()).ToArray(); }
 
