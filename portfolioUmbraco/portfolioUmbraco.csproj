@@ -251,6 +251,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\portfolioUmbraco.mdf" />
+    <Content Include="App_Data\portfolioUmbraco_log.ldf">
+      <DependentUpon>portfolioUmbraco.mdf</DependentUpon>
+    </Content>
     <Content Include="config\imageprocessor\security.config" />
     <Content Include="config\imageprocessor\processing.config" />
     <Content Include="config\imageprocessor\cache.config" />
