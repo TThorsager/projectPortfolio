@@ -251,6 +251,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\portfolioUmbraco.mdf" />
+    <Content Include="App_Data\portfolioUmbraco_log.ldf">
+      <DependentUpon>portfolioUmbraco.mdf</DependentUpon>
+    </Content>
     <Content Include="config\imageprocessor\security.config" />
     <Content Include="config\imageprocessor\processing.config" />
     <Content Include="config\imageprocessor\cache.config" />
@@ -2256,8 +2260,6 @@
     <Content Include="Umbraco\Webservices\TagsAutoCompleteHandler.ashx" />
     <Content Include="Umbraco\Webservices\TreeDataService.ashx" />
     <Content Include="Umbraco\Xslt\Web.config" />
-    <Content Include="Views\ArticleItem.cshtml" />
-    <Content Include="Views\ArticlesOverview.cshtml" />
     <Content Include="Views\Home.cshtml" />
     <Content Include="Views\Master.cshtml" />
     <Content Include="Views\ProjectItem.cshtml" />

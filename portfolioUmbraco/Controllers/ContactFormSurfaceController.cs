@@ -33,7 +33,7 @@ namespace portfolioUmbraco.Controllers
             comment.SetValue("messageContent", model.Message);
             comment.SetValue("umbracoNaviHide", true);
 
-            //save
+            //Gemmer den indtastede data
             Services.ContentService.Save(comment);
 
             

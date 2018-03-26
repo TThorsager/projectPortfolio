@@ -1,8 +1,13 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<CvItem>
 @using ContentModels = Umbraco.Web.PublishedContentModels;
+
 @{
-	Layout = "Master.cshtml";
+    Layout = "Master.cshtml";
 }
 
-@Model.EmployerName
-@Umbraco.Field("jobDescription")
+
+<h2>@Model.EmployerName</h2>
+<br />
+<img src="@Umbraco.Field("employerLogo")" width="200px"/>
+<br />
+@Umbraco.Field("employerDescription")
